@@ -1,16 +1,21 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/operations/operations';
+import { getContacts } from 'redux/selectors/selectors';
+
 export const App = () => {
+  const dispatch = useDispatch();
+  const { items, isLoading, error } = useSelector(getContacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      {isLoading && <p>Loading contacts...</p>}
+      {error && <p>{error}</p>}
+      <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p>
     </div>
   );
 };
