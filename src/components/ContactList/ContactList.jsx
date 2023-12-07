@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './ContactList.module.css';
-import ContactListItem from '../ContactListItem/ContactListItem';
+import ContactListItem from 'components/ContactListItem/ContactListItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors/selectors';
-import { deleteContact } from 'redux/contactsSlice/contactsSlice';
-
+//nie widzi importów
+import { deleteContacts } from '../../redux/operations';
+import { getContacts, getFilter } from '../../redux/selectors';
+//
 export const ContactList = () => {
   const filter = useSelector(getFilter);
   const contacts = useSelector(getContacts);
@@ -21,7 +22,7 @@ export const ContactList = () => {
           <button
             type="button"
             className={styles.contactDeleteBtn}
-            onClick={() => dispatch(deleteContact(id))}
+            onClick={() => dispatch(deleteContacts(id))}
           >
             Delete
           </button>

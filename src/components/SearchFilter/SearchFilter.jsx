@@ -1,11 +1,14 @@
 import React from 'react';
-import styles from './SearchFilter.module.css';
-//import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filterSlice/filterSlice';
 
-export const SearchFilter = ({ filter }) => {
+import { useDispatch, useSelector } from 'react-redux';
+//import { setFilter } from 'redux/filterSlice';
+import styles from './SearchFilter.module.css';
+import { setFilter } from '../../redux/filterSlice';
+import { getFilter } from '../../redux/selectors';
+
+export const SearchFilter = () => {
   const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
   return (
     <>
       <p className={styles.inputLabel}>Find contacts by name</p>
