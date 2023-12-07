@@ -5,11 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../redux/selectors';
 import { addContacts } from '../../redux/operations';
 
-//nie widzi importów
-//import { getContacts } from 'redux/selectors';
-//import { addContacts } from 'redux/operations';
-
-//
 export default function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
